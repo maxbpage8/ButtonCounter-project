@@ -12,6 +12,9 @@
 
     <string name="entCapTextName">Enter capacity: </string>
 
+    <string name="infoStringName">(Note: Progress Bar shows current count as percent of capacity) </string>
+
+
 
 
 

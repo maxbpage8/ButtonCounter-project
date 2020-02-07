@@ -76,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
                 appCountNum = 0;
                 txtvDispCount.setText(Integer.toString(appCountNum));
                 countProgBar.setProgress(appCountNum);
-                userCapNum.setText("R.id.entCapTextName");
+                userCapNum.setText("");
+
 
 
             }
@@ -115,13 +116,16 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
 
         String value = txtvDispCount.getText().toString();
+
         outState.putString("key", value);
+
     }
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         String value = savedInstanceState.getString("key");
-
+        appCountNum = Integer.parseInt(value);
         txtvDispCount.setText(value);
+
     }
 
 }
