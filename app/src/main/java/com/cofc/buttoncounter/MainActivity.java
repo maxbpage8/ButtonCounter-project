@@ -36,11 +36,13 @@ public class MainActivity extends AppCompatActivity {
         btnReset = (Button) findViewById(R.id.btnReset);
         btnApply = (Button) findViewById(R.id.btnApply);
 
-
+        int F_Max = 100;
         txtvDispCount = (TextView) findViewById(R.id.txtCount);
         userCapNum = (EditText) findViewById(R.id.entCap);
 
         countProgBar = (ProgressBar) findViewById(R.id.progressBar2);
+
+        countProgBar.setMax(F_Max);
 
         //integer.valueOf();
 
@@ -49,8 +51,6 @@ public class MainActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 appCountNum++;
-
-
                 txtvDispCount.setText(Integer.toString(appCountNum));
                 countProgBar.setProgress(appCountNum);
 
@@ -62,9 +62,16 @@ public class MainActivity extends AppCompatActivity {
 
         btnSub.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                appCountNum--;
-                txtvDispCount.setText(Integer.toString(appCountNum));
-                countProgBar.setProgress(appCountNum);
+                if (appCountNum==0){
+                    countProgBar.setProgress(appCountNum);
+
+                }
+                else {
+                    appCountNum--;
+                    txtvDispCount.setText(Integer.toString(appCountNum));
+                    countProgBar.setProgress(appCountNum);
+                }
+
 
 
 
@@ -86,9 +93,10 @@ public class MainActivity extends AppCompatActivity {
         btnApply.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 String progressMax = userCapNum.getText().toString();
-                countProgBar.setMax((((Integer.parseInt(progressMax)))));
                 txtvDispCount.setText(Integer.toString(appCountNum));
                 countProgBar.setProgress(appCountNum);
+                countProgBar.setMax((((Integer.parseInt(progressMax)))));
+
 
 
             }
@@ -125,6 +133,8 @@ public class MainActivity extends AppCompatActivity {
         String value = savedInstanceState.getString("key");
         appCountNum = Integer.parseInt(value);
         txtvDispCount.setText(value);
+        countProgBar.setProgress(appCountNum);
+
 
     }
 

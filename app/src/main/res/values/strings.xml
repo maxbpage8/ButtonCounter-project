@@ -9,6 +9,9 @@
 
     <string name="applybtnName">APPLY</string>
 
+    <string name="backColor">android:color/black</string>
+
+
 
     <string name="entCapTextName">Enter capacity: </string>
 
